@@ -1,0 +1,78 @@
+{% load static %}
+{% load i18n %}
+{% load custom_filters %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="generator" content="Hugo 0.119.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="">
+    <meta name="description" content="Backend Developer">
+    <meta name="keywords" content="">
+    <meta name="robots" content="noodp">
+    <meta name="theme-color" content="">
+
+    <link href="{% static 'img/sloth.png' %}" rel="icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    {% block extra_styles %} {% endblock extra_styles %}
+    <style>
+        .menu {
+            display: block; /* Show the menu by default */
+        }
+
+        .menu-trigger {
+            display: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .menu {
+                display: none; /* Hide the menu on smaller screens */
+            }
+
+            .menu__inner {
+                list-style: none;
+                padding: 0;
+                text-align: center;
+            }
+
+            .menu__inner li {
+                margin-bottom: 10px;
+            }
+
+            .menu-trigger {
+                display: inline-block;
+            }
+        }
+    </style>
+    <title>
+        {% block title %} {% endblock title %}
+    </title>
+</head>
+
+<body class="">
+
+        {% include 'includes/navbar.html' %}
+
+        {% block content %} {% endblock content %}
+
+        {% include 'includes/footer.html' %}
+    </div>
+
+    <script type="text/javascript" src="{% static 'js/bundle.min.js' %}" integrity="sha512-uyxrw&#43;1FLKR1lmDkAggR8ki8IyAIFVnooy2LAJJ3OFKUETNjnTXoNw0D092qdQse3Ws0PFvSKlXVvero9kj0mw=="></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={% google_analytics_id %}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{% google_analytics_id %}');
+    </script>
+    {% block extra_scripts %} {% endblock extra_scripts %}
+</body>
+</html>

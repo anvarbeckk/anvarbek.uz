@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ post.title }} {% endblock title %}
+
+{% block content %}
+    <div class="content">
+        <main class="post">
+            <article>
+                <h1 class="post-title">
+                    <a href="{% url 'article' slug=post.slug %}">{{ post.title }}</a>
+                </h1>
+
+                <div class="post-content">
+                    {{ post.formatted_content|safe }}
+                </div>
+            </article>
+
+            <div class="pagination">
+                <div class="pagination__buttons">
+                    {% if prev_post %}
+                        <span class="button prev">
+                            <a href="{% url 'article' slug=prev_post.slug %}">
+                                <span class="button__icon">←</span>
+                                <span class="button__text">{{ prev_post.title }}</span>
+                            </a>
+                        </span>
+                    {% endif %}
+
+                    {% if next_post %}
+                        <span class="button next">
+                            <a href="{% url 'article' slug=next_post.slug %}">
+                                <span class="button__text">{{ next_post.title }}</span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                    {% endif %}
+                </div>
+            </div>
+        </main>
+    </div>
+{% endblock content %}

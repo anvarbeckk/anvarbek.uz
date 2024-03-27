@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Anvarbek's blog {% endblock title %}
+
+{% block content %}
+    <div class="content">
+        <main class="posts">
+            <h1>BLOG</h1>
+
+            {% for year, posts in result.items %}
+                <div class="posts-group">
+                    <div class="post-year">{{ year }}</div>
+
+                    <ul class="posts-list">
+                        {% for post in posts|dictsortreversed:"created_at" %}
+                            <li class="post-item">
+                                {% if post.slug %}
+                                    <a href="{% url 'article' slug=post.slug %}">
+                                        <span class="post-title">{{ post.title }}</span>
+                                        <span class="post-day">{{ post.created_at|date:"F j" }}</span>
+                                    </a>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+
+            <div class="pagination">
+                <div class="pagination__buttons"></div>
+            </div>
+        </main>
+    </div>
+{% endblock content %}
